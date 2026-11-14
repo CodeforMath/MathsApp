@@ -232,7 +232,7 @@ export default function FunctionStudy() {
           {EXAMPLES.map((ex) => (
             <button
               key={ex}
-              className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-mono text-xs text-slate-600 hover:border-indigo-300 hover:bg-indigo-50"
+              className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-mono text-xs text-slate-600 hover:border-brand-300 hover:bg-brand-50"
               onClick={() => {
                 setInput(ex);
                 run(ex);

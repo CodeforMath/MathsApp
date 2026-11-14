@@ -207,9 +207,9 @@ export default function Geometry3D() {
           <p className="mt-1 text-[11px] text-slate-400">Gợi ý: {POINT_TYPES.find((t) => t.id === newPt.type).hint}</p>
           <div className="mt-2 space-y-1">
             {extras.points.map((p, i) => (
-              <div key={p.name + i} className="flex items-center justify-between rounded-md bg-indigo-50 px-2 py-1 text-xs text-indigo-800">
+              <div key={p.name + i} className="flex items-center justify-between rounded-md bg-brand-50 px-2 py-1 text-xs text-brand-800">
                 <span>{describe(p)}</span>
-                <button className="text-indigo-300 hover:text-rose-600" onClick={() => setList('points', (l) => l.filter((_, j) => j !== i))}>
+                <button className="text-brand-300 hover:text-rose-600" onClick={() => setList('points', (l) => l.filter((_, j) => j !== i))}>
                   <X size={12} />
                 </button>
               </div>

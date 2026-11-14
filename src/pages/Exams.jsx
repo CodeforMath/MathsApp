@@ -56,7 +56,7 @@ export default function Exams() {
         {list.map((e) => (
           <div key={e.id} className="card flex flex-wrap items-center gap-3 p-4">
             <Link to={`/de-thi/${e.id}`} className="mr-auto min-w-0">
-              <div className="font-semibold text-slate-800 hover:text-indigo-700">{e.title}</div>
+              <div className="font-semibold text-slate-800 hover:text-brand-700">{e.title}</div>
               <div className="text-xs text-slate-500">
                 {(e.questionIds || []).length} câu · {e.duration} phút · {e.versions} mã đề · cập nhật {new Date(e.updatedAt).toLocaleString('vi-VN')}
               </div>

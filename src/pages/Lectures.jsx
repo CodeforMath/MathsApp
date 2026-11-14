@@ -157,7 +157,7 @@ function QuestionPicker({ onPick, onClose }) {
       {bar}
       <div className="mt-3 space-y-2">
         {filtered.map((q) => (
-          <label key={q.id} className={`flex cursor-pointer gap-3 rounded-lg border p-3 ${sel.includes(q.id) ? 'border-indigo-400 bg-indigo-50/50' : 'border-slate-200'}`}>
+          <label key={q.id} className={`flex cursor-pointer gap-3 rounded-lg border p-3 ${sel.includes(q.id) ? 'border-brand-400 bg-brand-50/50' : 'border-slate-200'}`}>
             <input type="checkbox" checked={sel.includes(q.id)} onChange={(e) => setSel((s) => (e.target.checked ? [...s, q.id] : s.filter((x) => x !== q.id)))} />
             <div className="min-w-0 flex-1">
               <QuestionView q={q} meta />
@@ -175,7 +175,7 @@ function exportHtml(title, html) {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
 <style>
 body{font-family:'Times New Roman',serif;max-width:820px;margin:40px auto;padding:0 20px;line-height:1.6;color:#111;font-size:17px}
-h1{color:#312e81}h2{color:#3730a3}blockquote{border-left:4px solid #6366f1;background:#eef2ff;margin:12px 0;padding:6px 14px}
+h1{color:#14532d}h2{color:#15803d}blockquote{border-left:4px solid #22c55e;background:#f0fdf4;margin:12px 0;padding:6px 14px}
 table{border-collapse:collapse}td,th{border:1px solid #999;padding:4px 10px}img{max-width:100%;display:block;margin:8px auto}
 hr{border:none;border-top:1px dashed #bbb;margin:24px 0}
 </style></head><body>${html}</body></html>`;
@@ -325,7 +325,7 @@ export default function Lectures() {
             <Link
               key={l.id}
               to={`/bai-giang/${l.id}`}
-              className={`block rounded-lg px-3 py-2 text-sm ${l.id === id ? 'bg-indigo-50 font-medium text-indigo-700' : 'text-slate-700 hover:bg-slate-50'}`}
+              className={`block rounded-lg px-3 py-2 text-sm ${l.id === id ? 'bg-brand-50 font-medium text-brand-700' : 'text-slate-700 hover:bg-slate-50'}`}
             >
               <div className="truncate">{l.title || '(không tên)'}</div>
               <div className="text-[11px] text-slate-400">{new Date(l.updatedAt).toLocaleString('vi-VN')}</div>
@@ -346,7 +346,7 @@ export default function Lectures() {
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-3 py-2">
             <input
-              className="min-w-48 flex-1 rounded-md border border-transparent px-2 py-1 text-lg font-semibold text-slate-800 outline-none hover:border-slate-200 focus:border-indigo-400"
+              className="min-w-48 flex-1 rounded-md border border-transparent px-2 py-1 text-lg font-semibold text-slate-800 outline-none hover:border-slate-200 focus:border-brand-400"
               value={doc.title}
               onChange={(e) => update({ title: e.target.value })}
             />
@@ -364,7 +364,7 @@ export default function Lectures() {
                 ['split', Columns2, 'Song song'],
                 ['preview', Eye, 'Xem'],
               ].map(([v, Icon, t]) => (
-                <button key={v} title={t} className={`rounded-md px-2 py-1 ${view === v ? 'bg-indigo-100 text-indigo-700' : 'text-slate-500'}`} onClick={() => setView(v)}>
+                <button key={v} title={t} className={`rounded-md px-2 py-1 ${view === v ? 'bg-brand-100 text-brand-700' : 'text-slate-500'}`} onClick={() => setView(v)}>
                   <Icon size={15} />
                 </button>
               ))}
@@ -430,7 +430,7 @@ export default function Lectures() {
           {modal === 'math' && view !== 'preview' && (
             <div className="flex flex-wrap gap-1 border-b border-slate-200 bg-slate-50 px-2 py-1.5">
               {MATH_SNIPPETS.map((s) => (
-                <button key={s.ins} className="min-w-9 rounded border border-slate-200 bg-white px-2 py-1 text-sm hover:border-indigo-300" onClick={() => insertMath(s.ins)}>
+                <button key={s.ins} className="min-w-9 rounded border border-slate-200 bg-white px-2 py-1 text-sm hover:border-brand-300" onClick={() => insertMath(s.ins)}>
                   {s.label ? <span className="text-xs">{s.label}</span> : <Tex>{s.tex}</Tex>}
                 </button>
               ))}

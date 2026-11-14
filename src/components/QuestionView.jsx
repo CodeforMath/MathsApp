@@ -10,7 +10,7 @@ export default function QuestionView({ q, num, showAnswer = false, showExplanati
         <div className="mb-1.5 flex flex-wrap items-center gap-1.5 text-[11px]">
           <span className="rounded bg-slate-100 px-1.5 py-0.5 font-medium text-slate-600">{typeOf(q.type).label}</span>
           <span className={`rounded px-1.5 py-0.5 font-medium ${lv.color}`}>{lv.label}</span>
-          {q.topic && <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-indigo-700">{q.topic}</span>}
+          {q.topic && <span className="rounded bg-brand-50 px-1.5 py-0.5 text-brand-700">{q.topic}</span>}
           {q.grade && <span className="text-slate-400">Lớp {q.grade}</span>}
         </div>
       )}

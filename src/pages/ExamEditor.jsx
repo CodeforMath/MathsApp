@@ -79,7 +79,7 @@ export default function ExamEditor() {
           <ArrowLeft size={14} />
         </Link>
         <input
-          className="mr-auto min-w-64 flex-1 rounded-md border border-transparent px-2 py-1 text-xl font-bold text-slate-800 outline-none hover:border-slate-200 focus:border-indigo-400"
+          className="mr-auto min-w-64 flex-1 rounded-md border border-transparent px-2 py-1 text-xl font-bold text-slate-800 outline-none hover:border-slate-200 focus:border-brand-400"
           value={exam.title}
           onChange={(e) => set({ title: e.target.value })}
         />
@@ -166,7 +166,7 @@ export default function ExamEditor() {
                 </span>
               ))}
               <span>
-                Tổng điểm tối đa: <b className="text-indigo-700">{fmtScore(total)}</b>
+                Tổng điểm tối đa: <b className="text-brand-700">{fmtScore(total)}</b>
               </span>
             </div>
             <div className="mt-1 flex flex-wrap gap-1">

@@ -49,7 +49,7 @@ function Item({ q, num, resp, setResp, done }) {
                 disabled={done}
                 onClick={() => setResp(i)}
                 className={`flex gap-2 rounded-lg border px-3 py-2 text-left transition ${
-                  correct ? 'border-emerald-400 bg-emerald-50' : wrong ? 'border-rose-400 bg-rose-50' : chosen ? 'border-indigo-500 bg-indigo-50' : 'border-slate-200 hover:bg-slate-50'
+                  correct ? 'border-emerald-400 bg-emerald-50' : wrong ? 'border-rose-400 bg-rose-50' : chosen ? 'border-brand-500 bg-brand-50' : 'border-slate-200 hover:bg-slate-50'
                 }`}
               >
                 <span className="font-bold">{LETTERS[i]}.</span>
@@ -78,7 +78,7 @@ function Item({ q, num, resp, setResp, done }) {
                       disabled={done}
                       onClick={() => setResp({ ...(resp || {}), [i]: val })}
                       className={`w-14 rounded-md border px-2 py-1 text-xs font-bold ${
-                        done && correct ? 'border-emerald-400 bg-emerald-100 text-emerald-700' : done && chosen ? 'border-rose-400 bg-rose-100 text-rose-700' : chosen ? 'border-indigo-500 bg-indigo-100 text-indigo-700' : 'border-slate-200 text-slate-500'
+                        done && correct ? 'border-emerald-400 bg-emerald-100 text-emerald-700' : done && chosen ? 'border-rose-400 bg-rose-100 text-rose-700' : chosen ? 'border-brand-500 bg-brand-100 text-brand-700' : 'border-slate-200 text-slate-500'
                       }`}
                     >
                       {val ? 'Đúng' : 'Sai'}
@@ -191,7 +191,7 @@ export default function ExamTake() {
             </button>
           ) : (
             <div className="text-right">
-              <div className="text-xl font-bold text-indigo-700">
+              <div className="text-xl font-bold text-brand-700">
                 {fmtScore(score)} / {fmtScore(max)}
               </div>
               {max !== 10 && <div className="text-xs text-slate-500">Quy về thang 10: {fmtScore((score / max) * 10)}</div>}

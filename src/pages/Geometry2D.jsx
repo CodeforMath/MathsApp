@@ -37,18 +37,18 @@ JXG.Options.text.fontSize = 16;
 JXG.Options.point = {
   ...JXG.Options.point,
   size: 2.5,
-  strokeColor: '#1e3a8a',
-  fillColor: '#2563eb',
+  strokeColor: '#15803d',
+  fillColor: '#22c55e',
   highlightFillColor: '#f59e0b',
   highlightStrokeColor: '#d97706',
 };
 JXG.Options.point.label = { ...JXG.Options.point.label, fontSize: 17, offset: [8, 10], strokeColor: '#0f172a' };
 for (const k of ['line', 'segment', 'circle']) {
-  JXG.Options[k] = { ...JXG.Options[k], strokeColor: '#0f172a', strokeWidth: 1.6, highlightStrokeColor: '#6366f1' };
+  JXG.Options[k] = { ...JXG.Options[k], strokeColor: '#0f172a', strokeWidth: 1.6, highlightStrokeColor: '#22c55e' };
 }
 JXG.Options.polygon = {
   ...JXG.Options.polygon,
-  fillColor: '#3b82f6',
+  fillColor: '#22c55e',
   fillOpacity: 0.07,
   highlightFillOpacity: 0.12,
   borders: { ...JXG.Options.polygon.borders, strokeColor: '#0f172a', strokeWidth: 1.6 },
@@ -257,7 +257,7 @@ export default function Geometry2D() {
 
   const clearSelection = () => {
     selRef.current.forEach((o) => {
-      if (o.elementClass === C_POINT) o.setAttribute({ strokeColor: '#1e3a8a', fillColor: '#2563eb', size: 2.5 });
+      if (o.elementClass === C_POINT) o.setAttribute({ strokeColor: '#15803d', fillColor: '#22c55e', size: 2.5 });
       else o.setAttribute({ strokeColor: '#0f172a' });
     });
     selRef.current = [];
@@ -720,7 +720,7 @@ export default function Geometry2D() {
               <ImagePlus size={14} /> Lưu thư viện
             </button>
           </div>
-          <div className="no-print bg-indigo-50/60 px-3 py-1.5 text-xs text-indigo-800">
+          <div className="no-print bg-brand-50/60 px-3 py-1.5 text-xs text-brand-800">
             <b>{currentTool.label}:</b> {currentTool.help}
           </div>
           <div id={boxId.current} className="jxgbox min-h-120 w-full flex-1" style={{ background: '#fff' }} />

@@ -24,19 +24,19 @@ const NAV = [
   { to: '/de-thi', label: 'Đề kiểm tra', icon: ClipboardList },
 ];
 
-function Sidebar() {
+function TopBar() {
   return (
-    <aside className="no-print flex w-16 shrink-0 flex-col border-r border-slate-200 bg-white lg:w-56">
-      <div className="flex h-14 items-center gap-2 border-b border-slate-200 px-3 lg:px-4">
-        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-indigo-600 font-serif text-xl text-white italic">
-          ∫
-        </div>
-        <div className="hidden lg:block">
-          <div className="text-sm leading-tight font-bold text-slate-800">MathsApp</div>
-          <div className="text-[11px] text-slate-500">Công cụ dạy học Toán</div>
-        </div>
+    <header className="no-print shrink-0">
+      <div className="flex h-14 items-center gap-3 bg-white px-4">
+        <NavLink to="/" className="flex items-center gap-2">
+          <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 font-serif text-lg text-white italic shadow-sm shadow-brand-500/40">
+            ∫
+          </div>
+          <span className="text-xl font-black tracking-tight text-brand-500">MathsApp</span>
+        </NavLink>
+        <span className="hidden text-sm text-slate-500 sm:inline">· Công cụ dạy học Toán</span>
       </div>
-      <nav className="flex-1 space-y-1 p-2">
+      <nav className="flex h-12 items-stretch gap-1 overflow-x-auto bg-black px-2">
         {NAV.map(({ to, label, icon: Icon, end }) => (
           <NavLink
             key={to}
@@ -44,17 +44,19 @@ function Sidebar() {
             end={end}
             title={label}
             className={({ isActive }) =>
-              `flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition ${
-                isActive ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-100'
+              `relative flex shrink-0 items-center gap-2 px-3 text-xs font-bold tracking-wide whitespace-nowrap uppercase transition lg:px-4 ${
+                isActive
+                  ? 'text-brand-400 after:absolute after:inset-x-2 after:bottom-0 after:h-[3px] after:rounded-t-full after:bg-brand-400'
+                  : 'text-slate-300 hover:text-white'
               }`
             }
           >
-            <Icon size={18} className="shrink-0" />
-            <span className="hidden lg:inline">{label}</span>
+            <Icon size={16} className="shrink-0" />
+            <span className={end ? 'sr-only' : ''}>{label}</span>
           </NavLink>
         ))}
       </nav>
-    </aside>
+    </header>
   );
 }
 
@@ -88,9 +90,9 @@ export default function App() {
       {bare ? (
         routes
       ) : (
-        <div className="flex h-screen overflow-hidden bg-slate-50">
-          <Sidebar />
-          <main className="min-w-0 flex-1 overflow-auto">{routes}</main>
+        <div className="flex h-screen flex-col overflow-hidden bg-white">
+          <TopBar />
+          <main className="page-bg min-h-0 flex-1 overflow-auto">{routes}</main>
         </div>
       )}
     </ToastProvider>

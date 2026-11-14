@@ -3,35 +3,59 @@
 @theme {
   --font-sans: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-serif: 'Times New Roman', 'Cambria Math', Cambria, serif;
+
+  /* Màu chủ đạo (xanh lá, tông VMaths) */
+  --color-brand-50: #f0fdf4;
+  --color-brand-100: #dcfce7;
+  --color-brand-200: #bbf7d0;
+  --color-brand-300: #86efac;
+  --color-brand-400: #4ade80;
+  --color-brand-500: #22c55e;
+  --color-brand-600: #16a34a;
+  --color-brand-700: #15803d;
+  --color-brand-800: #166534;
+  --color-brand-900: #14532d;
+  --color-brand-950: #052e16;
+}
+
+body {
+  color: #0f172a;
+  background: #ffffff;
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
-    @apply border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700;
+    @apply border-brand-500 bg-brand-500 text-white shadow-sm shadow-brand-500/30 hover:border-brand-600 hover:bg-brand-600 hover:text-white;
+  }
+  .btn-dark {
+    @apply border-black bg-black text-white hover:border-slate-800 hover:bg-slate-800 hover:text-white;
   }
   .btn-danger {
-    @apply border-rose-200 text-rose-600 hover:bg-rose-50;
+    @apply border-rose-200 text-rose-600 hover:border-rose-300 hover:bg-rose-50 hover:text-rose-700;
   }
   .btn-sm {
-    @apply px-2 py-1 text-xs;
+    @apply rounded-lg px-2 py-1 text-xs;
   }
   .input {
-    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100;
+    @apply w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm outline-none focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-100;
   }
   .label {
-    @apply mb-1 block text-xs font-semibold tracking-wide text-slate-500 uppercase;
+    @apply mb-1 block text-xs font-bold tracking-wide text-slate-500 uppercase;
   }
   .card {
-    @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+    @apply rounded-2xl border border-slate-200/80 bg-white;
   }
   .tool-btn {
-    @apply flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm text-slate-700 hover:bg-slate-100;
+    @apply flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-700;
   }
   .tool-btn.active {
-    @apply bg-indigo-100 font-semibold text-indigo-700;
+    @apply bg-brand-100 font-semibold text-brand-800;
+  }
+  .page-bg {
+    background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 320px);
   }
 }
 
@@ -47,13 +71,13 @@
 .math-content h1 {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #312e81;
+  color: #14532d;
   margin: 1.2rem 0 0.6rem;
 }
 .math-content h2 {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #3730a3;
+  color: #15803d;
   margin: 1.1rem 0 0.5rem;
 }
 .math-content h3 {
@@ -75,8 +99,8 @@
   margin: 0.4rem 0;
 }
 .math-content blockquote {
-  border-left: 4px solid #6366f1;
-  background: #eef2ff;
+  border-left: 4px solid #22c55e;
+  background: #f0fdf4;
   padding: 0.5rem 1rem;
   margin: 0.75rem 0;
   border-radius: 0 0.5rem 0.5rem 0;
