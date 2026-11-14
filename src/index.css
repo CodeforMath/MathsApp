@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Times New Roman', 'Cambria Math', Cambria, serif;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700;
+  }
+  .btn-danger {
+    @apply border-rose-200 text-rose-600 hover:bg-rose-50;
+  }
+  .btn-sm {
+    @apply px-2 py-1 text-xs;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold tracking-wide text-slate-500 uppercase;
+  }
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+  }
+  .tool-btn {
+    @apply flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm text-slate-700 hover:bg-slate-100;
+  }
+  .tool-btn.active {
+    @apply bg-indigo-100 font-semibold text-indigo-700;
+  }
+}
+
+/* ---------- Nội dung Markdown + công thức ---------- */
+.math-content {
+  line-height: 1.65;
+  color: #1e293b;
+  overflow-wrap: break-word;
+}
+.math-content > :first-child {
+  margin-top: 0;
+}
+.math-content h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #312e81;
+  margin: 1.2rem 0 0.6rem;
+}
+.math-content h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #3730a3;
+  margin: 1.1rem 0 0.5rem;
+}
+.math-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.4rem;
+}
+.math-content p {
+  margin: 0.5rem 0;
+}
+.math-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0.4rem 0;
+}
+.math-content ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin: 0.4rem 0;
+}
+.math-content blockquote {
+  border-left: 4px solid #6366f1;
+  background: #eef2ff;
+  padding: 0.5rem 1rem;
+  margin: 0.75rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.math-content table {
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+}
+.math-content th,
+.math-content td {
+  border: 1px solid #cbd5e1;
+  padding: 0.35rem 0.7rem;
+}
+.math-content th {
+  background: #f1f5f9;
+}
+.math-content img {
+  max-width: 100%;
+  margin: 0.5rem auto;
+  display: block;
+}
+.math-content hr {
+  margin: 1.5rem 0;
+  border-color: #cbd5e1;
+  border-style: dashed;
+}
+.math-content code {
+  background: #f1f5f9;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+.math-content .katex-display {
+  margin: 0.6rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.math-inline p {
+  display: inline;
+  margin: 0;
+}
+
+/* JSXGraph */
+.jxgbox {
+  border: none !important;
+  border-radius: 0 !important;
+}
+.jxgbox text {
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  .print-page {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  .break-before {
+    break-before: page;
+  }
+  .avoid-break {
+    break-inside: avoid;
+  }
+}
