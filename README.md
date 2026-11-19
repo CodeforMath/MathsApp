@@ -11,21 +11,27 @@
 | Tính toán | mathjs (đạo hàm ký hiệu) + thuật toán số tự viết (cực trị, giới hạn, tiệm cận) |
 | Hình phẳng | JSXGraph (hình học động, kéo thả) |
 | Hình không gian | Bộ dựng hình SVG tự viết, tự xác định nét khuất |
-| Máy chủ | Node.js + Express, lưu dữ liệu bằng file JSON trong `server/data/` |
+| Lưu trữ | IndexedDB ngay trong trình duyệt — không cần máy chủ, chạy được trên GitHub Pages |
 
 ## Chạy ứng dụng
 
 ```bash
 npm install
-npm run dev        # API: http://localhost:3001 · Web: http://localhost:5173
+npm run dev        # http://localhost:5173
 ```
 
-Bản chạy thật (một cổng duy nhất):
+## Đưa lên mạng (GitHub Pages)
 
-```bash
-npm run build
-npm start          # http://localhost:3001
-```
+Mỗi lần push lên nhánh `main`, workflow `.github/workflows/deploy.yml` tự build và triển khai.
+Lần đầu cần bật: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+Địa chỉ: `https://<tài-khoản>.github.io/MathsApp/`.
+
+## Dữ liệu được lưu ở đâu?
+
+Bài giảng, câu hỏi, đề và thư viện hình được lưu **trong trình duyệt của từng máy** (IndexedDB).
+Không có máy chủ nên dữ liệu không tự đồng bộ giữa các máy. Dùng nút **Sao lưu** trên thanh trên cùng
+để tải toàn bộ dữ liệu về một file `.json`, và **Khôi phục** để nạp file đó vào máy/trình duyệt khác.
+Nên sao lưu định kỳ: xoá dữ liệu duyệt web hoặc dùng chế độ ẩn danh sẽ làm mất dữ liệu.
 
 ## Chức năng
 
@@ -35,7 +41,7 @@ npm start          # http://localhost:3001
 
 **Khảo sát hàm số** – nhập `y = f(x)`, tự động: tập xác định, đạo hàm, nghiệm `y' = 0`, giới hạn, tiệm cận đứng/ngang/xiên, bảng biến thiên kiểu SGK, kết luận đơn điệu – cực trị, GTLN/GTNN trên đoạn. Vẽ đồ thị (kéo/zoom, vẽ nhiều hàm). Xuất PNG, mã `tkz-tab`, lời giải dạng Markdown.
 
-**Bài giảng** – soạn Markdown + LaTeX có xem trước, thanh ký hiệu toán, khung Định nghĩa/Định lí/Ví dụ, chèn hình từ thư viện (hình vẽ từ các công cụ bấm “Lưu thư viện”), chèn câu hỏi từ ngân hàng, trình chiếu (ngắt trang bằng `---`), in/PDF, xuất `.md`/`.html`.
+**Bài giảng** – soạn Markdown + LaTeX có xem trước, thanh ký hiệu toán, khung Định nghĩa/Định lí/Ví dụ, chèn hình từ thư viện (hình vẽ từ các công cụ bấm “Lưu thư viện”, lưu trong trình duyệt), chèn câu hỏi từ ngân hàng, trình chiếu (ngắt trang bằng `---`), in/PDF, xuất `.md`/`.html`.
 
 **Ngân hàng câu hỏi** – 3 dạng theo cấu trúc 2025: trắc nghiệm 4 lựa chọn, Đúng/Sai, trả lời ngắn; phân loại mức độ NB/TH/VD/VDC, chủ đề, lớp. Nhập nhanh từ văn bản:
 

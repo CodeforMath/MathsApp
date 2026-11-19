@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { Box, BookOpen, ClipboardList, FileQuestion, Home as HomeIcon, LineChart, Shapes } from 'lucide-react';
 import { ToastProvider } from './components/Toast.jsx';
+import BackupMenu from './components/BackupMenu.jsx';
 import Home from './pages/Home.jsx';
 const Geometry2D = lazy(() => import('./pages/Geometry2D.jsx'));
 const Geometry3D = lazy(() => import('./pages/Geometry3D.jsx'));
@@ -35,6 +36,7 @@ function TopBar() {
           <span className="text-xl font-black tracking-tight text-brand-500">MathsApp</span>
         </NavLink>
         <span className="hidden text-sm text-slate-500 sm:inline">· Công cụ dạy học Toán</span>
+        <BackupMenu />
       </div>
       <nav className="flex h-12 items-stretch gap-1 overflow-x-auto bg-black px-2">
         {NAV.map(({ to, label, icon: Icon, end }) => (

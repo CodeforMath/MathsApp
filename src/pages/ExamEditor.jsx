@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowDown, ArrowLeft, ArrowUp, PlayCircle, Plus, Printer, Save, Shuffle, X } from 'lucide-react';
 import { api } from '../lib/api.js';
+import { openRoute } from '../lib/routes.js';
 import { LEVELS, POINTS, TYPES, fmtScore, levelOf, typeOf } from '../lib/quiz.js';
 import QuestionView from '../components/QuestionView.jsx';
 import { useQuestionFilter } from './QuestionBank.jsx';
@@ -62,7 +63,7 @@ export default function ExamEditor() {
 
   const openAfterSave = async (path) => {
     if (dirty) await save();
-    window.open(path, '_blank');
+    openRoute(path);
   };
 
   const counts = TYPES.map((t) => ({ ...t, n: selected.filter((q) => q.type === t.id).length }));

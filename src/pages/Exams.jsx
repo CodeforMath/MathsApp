@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ClipboardList, PlayCircle, Plus, Printer, Trash2 } from 'lucide-react';
 import { api } from '../lib/api.js';
+import { openRoute } from '../lib/routes.js';
 import { useToast } from '../components/Toast.jsx';
 
 export default function Exams() {
@@ -61,10 +62,10 @@ export default function Exams() {
                 {(e.questionIds || []).length} câu · {e.duration} phút · {e.versions} mã đề · cập nhật {new Date(e.updatedAt).toLocaleString('vi-VN')}
               </div>
             </Link>
-            <button className="btn btn-sm" onClick={() => window.open(`/de-thi/${e.id}/in`, '_blank')}>
+            <button className="btn btn-sm" onClick={() => openRoute(`/de-thi/${e.id}/in`)}>
               <Printer size={14} /> In đề
             </button>
-            <button className="btn btn-sm" onClick={() => window.open(`/de-thi/${e.id}/lam-bai`, '_blank')}>
+            <button className="btn btn-sm" onClick={() => openRoute(`/de-thi/${e.id}/lam-bai`)}>
               <PlayCircle size={14} /> Làm bài
             </button>
             <button className="btn btn-sm btn-danger" onClick={() => remove(e)}>

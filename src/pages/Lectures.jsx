@@ -25,6 +25,7 @@ import {
   Upload,
 } from 'lucide-react';
 import { api } from '../lib/api.js';
+import { openRoute } from '../lib/routes.js';
 import { MathText, Tex } from '../components/MathText.jsx';
 import Modal from '../components/Modal.jsx';
 import QuestionView from '../components/QuestionView.jsx';
@@ -100,7 +101,7 @@ function ImageLibrary({ onPick, onClose }) {
             }}
           />
         </label>
-        <span className="text-sm text-slate-500">Hình vẽ từ các công cụ (nút “Lưu thư viện”) cũng xuất hiện ở đây. Bấm vào ảnh để chèn.</span>
+        <span className="text-sm text-slate-500">Hình vẽ từ các công cụ (nút “Lưu thư viện”) cũng xuất hiện ở đây. Bấm vào ảnh để chèn. Ảnh được lưu trong trình duyệt này.</span>
       </div>
       {!imgs.length && <div className="p-8 text-center text-slate-400">Thư viện trống.</div>}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -172,7 +173,7 @@ function QuestionPicker({ onPick, onClose }) {
 function exportHtml(title, html) {
   return `<!doctype html>
 <html lang="vi"><head><meta charset="utf-8"><title>${title}</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css">
 <style>
 body{font-family:'Times New Roman',serif;max-width:820px;margin:40px auto;padding:0 20px;line-height:1.6;color:#111;font-size:17px}
 h1{color:#14532d}h2{color:#15803d}blockquote{border-left:4px solid #22c55e;background:#f0fdf4;margin:12px 0;padding:6px 14px}
@@ -372,10 +373,10 @@ export default function Lectures() {
             <button className="btn btn-primary btn-sm" onClick={save} disabled={!dirty}>
               <Save size={14} /> {dirty ? 'Lưu' : 'Đã lưu'}
             </button>
-            <button className="btn btn-sm" onClick={() => window.open(`/bai-giang/${doc.id}/trinh-chieu`, '_blank')} title="Trình chiếu (các trang ngăn bởi ---)">
+            <button className="btn btn-sm" onClick={() => openRoute(`/bai-giang/${doc.id}/trinh-chieu`)} title="Trình chiếu (các trang ngăn bởi ---)">
               <Presentation size={14} /> Trình chiếu
             </button>
-            <button className="btn btn-sm" onClick={() => window.open(`/bai-giang/${doc.id}/in`, '_blank')}>
+            <button className="btn btn-sm" onClick={() => openRoute(`/bai-giang/${doc.id}/in`)}>
               <Printer size={14} /> In / PDF
             </button>
             <button className="btn btn-sm" onClick={() => downloadText(doc.content, `${doc.title}.md`, 'text/markdown;charset=utf-8')}>
@@ -384,9 +385,9 @@ export default function Lectures() {
             <button
               className="btn btn-sm"
               onClick={() => {
+                // ảnh trong bài đã ở dạng data URL nên file HTML tự chứa đủ, không cần mạng
                 const html = previewRef.current?.innerHTML || '';
-                const abs = html.replace(/src="\/uploads\//g, `src="${location.origin}/uploads/`);
-                downloadText(exportHtml(doc.title, abs), `${doc.title}.html`, 'text/html;charset=utf-8');
+                downloadText(exportHtml(doc.title, html), `${doc.title}.html`, 'text/html;charset=utf-8');
               }}
               disabled={view === 'edit'}
               title={view === 'edit' ? 'Bật chế độ xem để xuất HTML' : ''}
@@ -472,7 +473,7 @@ export default function Lectures() {
           onClose={() => setModal(null)}
           onPick={(im) => {
             setModal(null);
-            insert(`\n![${im.name}](${im.url})\n`, { line: true });
+            insert(`\n![${im.name}](${im.ref})\n`, { line: true });
           }}
         />
       )}

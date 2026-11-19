@@ -4,18 +4,17 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -n api,web -c blue,green \"node --watch server/index.js\" \"vite\"",
+    "dev": "vite",
     "build": "vite build",
-    "start": "node server/index.js"
+    "preview": "vite preview",
+    "start": "vite preview"
   },
   "dependencies": {
-    "express": "^5.3.0",
     "html-to-image": "^1.11.13",
     "jsxgraph": "^1.14.3",
     "katex": "^0.19.1",
     "lucide-react": "^1.73.0",
     "mathjs": "^15.2.0",
-    "multer": "^2.5.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-markdown": "^10.1.0",
@@ -27,7 +26,6 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.5",
     "@vitejs/plugin-react": "^6.3.0",
-    "concurrently": "^10.0.7",
     "tailwindcss": "^4.3.5",
     "vite": "^8.3.8"
   }
